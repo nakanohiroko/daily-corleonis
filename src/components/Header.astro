@@ -10,7 +10,6 @@ import HeaderLink from './HeaderLink.astro';
 	<!--
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
 		<HeaderLink href="/about">About</HeaderLink>
 		<HeaderLink href="https://twitter.com/corleonis" target="_blank">Twitter</HeaderLink>
 	</nav>
@@ -23,18 +22,22 @@ import HeaderLink from './HeaderLink.astro';
 	h2 {
 		margin: 0.5em 0;
 		font-size:1.6em !important;
+		
+		a{
+			color:#000;
 
-		&:hover{
 			span{
-				--tw-text-opacity: 1;
-				color: rgb(59 130 246 / var(--tw-text-opacity));
+				font-family: 'Reenie Beanie', cursive;
+				font-size:1.2em;
+				padding-right:0.1em;
 			}
-		}
 
-		span{
-			font-family: 'Reenie Beanie', cursive;
-			font-size:1.2em;
-			padding-right:0.1em;
+			&:hover{
+				span{
+					--tw-text-opacity: 1;
+					color: rgb(59 130 246 / var(--tw-text-opacity));
+				}
+			}
 		}
 	}
 </style>
