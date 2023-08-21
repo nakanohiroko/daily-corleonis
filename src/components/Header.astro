@@ -1,25 +1,40 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+// import { SITE_TITLE } from '../config';
 ---
 
 <header>
 	<h2>
-		{SITE_TITLE}
+		<a href="/"><span>(almost)</span> daily corleonis</a>
 	</h2>
+	<!--
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
 		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
+		<HeaderLink href="https://twitter.com/corleonis" target="_blank">Twitter</HeaderLink>
 	</nav>
+	-->
 </header>
-<style>
+<style lang="scss">
 	header {
-		margin: 0em 0 2em;
+		margin: 1em 0 2em;
 	}
 	h2 {
 		margin: 0.5em 0;
+		font-size:1.6em !important;
+
+		&:hover{
+			span{
+				--tw-text-opacity: 1;
+				color: rgb(59 130 246 / var(--tw-text-opacity));
+			}
+		}
+
+		span{
+			font-family: 'Reenie Beanie', cursive;
+			font-size:1.2em;
+			padding-right:0.1em;
+		}
 	}
 </style>

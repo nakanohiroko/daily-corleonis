@@ -1,0 +1,87 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import type { GetStaticPathsOptions } from 'astro'
+
+//microCMS呼び出し
+import { getBlogs } from "../library/microcms";
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
+  const blogs = await getBlogs({ limit: 10,fields: ["id", "title", "date","content"] });
+  return paginate(blogs.contents, { pageSize: 5 });
+};
+import PaginationList from '../components/UI/PaginationList.svelte';
+const { page } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		<main>
+			<div>
+				{
+					page.data.map((post) => (
+						<div class="post">
+							<a href={`/blog/${post.id}`} class="post-title text-blue-500">
+								{new Date(post.date).toLocaleDateString("ja-JP", {
+									year: "numeric",
+									month: "2-digit",
+									day: "2-digit",
+								})
+								.split("/")
+								.join(".")}
+								{days[new Date(post.date).getDay()]}.
+							</a>
+							<div set:html={post.content} class="entry-content" />
+						</div>
+					))
+				}
+			</div>
+      <PaginationList {page} />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style lang="scss" is:global>
+  body{
+    margin:0 auto !important;
+  }
+	.post{
+		margin-bottom: 2.8em;
+		padding-bottom:2.5em;
+		border-bottom: 1px solid #e3e2e2;
+	}
+	.post-title{
+		font-size:1.25em;
+		text-decoration: none;
+    margin-bottom: .4em;
+    display: inline-block;
+	}
+	.entry-content{
+		line-height: 1.7em;
+		font-family: 'Noto Sans JP', sans-serif;
+
+		figure{
+			margin-top:1.5em;
+			margin-bottom:1.5em;
+		}
+
+    p{
+      margin-bottom: 1.3em;
+
+      a{
+        text-decoration: underline;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
+	}
+</style>
