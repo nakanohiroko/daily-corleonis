@@ -1,9 +1,16 @@
 ---
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 import type { GetStaticPathsOptions } from 'astro'
+
+dayjs.locale('ja');
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 //microCMS呼び出し
 import { getBlogs } from "../library/microcms";
@@ -29,14 +36,7 @@ const { page } = Astro.props;
 					page.data.map((post) => (
 						<div class="post">
 							<a href={`/blog/${post.id}`} class="post-title text-blue-500">
-								{new Date(post.date).toLocaleDateString("ja-JP", {
-									year: "numeric",
-									month: "2-digit",
-									day: "2-digit",
-								})
-								.split("/")
-								.join(".")}
-								{days[new Date(post.date).getDay()]}.
+								{dayjs(post.date).tz('Asia/Tokyo').format('YYYY.MM.DD ddd.')}
 							</a>
 							<div set:html={post.content} class="entry-content" />
 						</div>
