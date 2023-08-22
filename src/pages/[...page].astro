@@ -14,7 +14,6 @@ dayjs.extend(timezone);
 
 //microCMS呼び出し
 import { getBlogs } from "../library/microcms";
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   const blogs = await getBlogs({ limit: 10,fields: ["id", "title", "date","content"] });
   return paginate(blogs.contents, { pageSize: 5 });

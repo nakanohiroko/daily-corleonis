@@ -1,10 +1,16 @@
 ---
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../config';
 import { getBlogs, getBlogDetail } from "../../library/microcms";
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+dayjs.locale('ja');
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 // 生成する記事のIDを全て取得
 export async function getStaticPaths() {
@@ -32,14 +38,7 @@ const post = await getBlogDetail(blogId as string);
 			<div>
         <div class="post">
           <h2 class="post-title">
-            {new Date(post.date).toLocaleDateString("ja-JP", {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-            })
-            .split("/")
-            .join(".")}
-            {days[new Date(post.date).getDay()]}.
+            {dayjs(post.date).tz('Asia/Tokyo').format('YYYY.MM.DD ddd.')}
           </h2>
           <div set:html={post.content} class="entry-content" />
         </div>
