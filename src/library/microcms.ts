@@ -1,4 +1,4 @@
-import type { MicroCMSQueries } from "microcms-js-sdk";
+import type { MicroCMSQueries, MicroCMSImage } from "microcms-js-sdk";
 import { createClient } from "microcms-js-sdk";
 const client = createClient({
   serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
@@ -13,6 +13,7 @@ export type Blog = {
   revisedAt: string;
   date:string;
   content: string;
+  thumbnail: MicroCMSImage;
 };
 export type BlogResponse = {
   totalCount: number;

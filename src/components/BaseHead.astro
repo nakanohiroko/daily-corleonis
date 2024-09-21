@@ -1,15 +1,18 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import type { MicroCMSImage } from "microcms-js-sdk";
 
 export interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title: string;
+  description: string;
+  image?: string;
+  thumbnail?: MicroCMSImage;
 }
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+const { title, description, image = '/placeholder-social.jpg', thumbnail } = Astro.props;
+
+// Check if thumbnail exists and use its URL, otherwise fall back to the provided image
+const ogImage = thumbnail ? new URL(thumbnail.url, Astro.url) : new URL(image, Astro.url);
 ---
 
 <!-- Global Metadata -->
@@ -28,22 +31,22 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={ogImage} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={ogImage} />
 
 <!-- Google tag (gtag.js) -->
 <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-EHJQ5ZLLFZ"></script>
 <script type="text/partytown">
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-				dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'G-EHJQ5ZLLFZ');
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-EHJQ5ZLLFZ');
 </script>

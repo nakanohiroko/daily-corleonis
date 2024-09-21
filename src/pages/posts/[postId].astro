@@ -30,7 +30,7 @@ const post = await getBlogDetail(postId as string);
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} thumbnail={post.thumbnail} />
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
