@@ -42,67 +42,8 @@ const { page } = Astro.props;
 					))
 				}
 			</div>
-      <PaginationList {page} />
+      	<PaginationList {page} />
 		</main>
 		<Footer />
 	</body>
 </html>
-
-<style lang="scss" is:global>
-  body{
-    margin:0 auto !important;
-  }
-	.post{
-		margin-bottom: 2.8em;
-		padding-bottom:2.5em;
-		border-bottom: 1px solid #e3e2e2;
-	}
-	.post-title{
-		font-size:1.25em;
-		text-decoration: none;
-    margin-bottom: .4em;
-    display: inline-block;
-
-		&:hover{
-			opacity: .7;
-		}
-	}
-	.entry-content{
-		line-height: 1.7em;
-		font-family: 'Noto Sans JP', sans-serif;
-
-		figure{
-			margin-top:1.5em;
-			margin-bottom:1.5em;
-
-			figcaption{
-				font-size:0.9em;
-				color:#999;
-				padding-top: 0.3em;
-			}
-		}
-
-		blockquote{
-			font-style: italic;
-			color: #555;
-			border-left: 4px solid rgb(59 130 246);
-			padding:1rem 0 0 1.5rem;
-			margin: 1.5rem 0;
-			border-radius: 4px;
-			font-size: 0.925rem;
-		}
-
-    p{
-      margin-bottom: 1.3em;
-
-      a{
-        text-decoration: underline;
-				--tw-text-opacity: 1;
-				color: rgb(59 130 246 / var(--tw-text-opacity));
-        &:hover{
-          text-decoration: none;
-        }
-      }
-    }
-	}
-</style>

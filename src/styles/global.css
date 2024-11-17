@@ -67,3 +67,49 @@ blockquote {
 	margin: 0px;
 	font-style: italic;
 }
+.post{
+	margin-bottom: 2.8em;
+	padding-bottom:2.5em;
+}
+.post-title{
+	font-size:1.25em;
+	text-decoration: none;
+	margin-bottom: .4em;
+	--tw-text-opacity: 1;
+	color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+.entry-content{
+	line-height: 1.7em;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.entry-content figure{
+	margin-top:1.5em;
+	margin-bottom:1.5em;
+	figcaption{
+		font-size:0.9em;
+		color:#999;
+		padding-top: 0.3em;
+	}
+}
+.entry-content blockquote{
+	font-style: italic;
+	color: #555;
+	border-left: 4px solid rgb(59 130 246);
+	padding:1rem 0 0 1.5rem;
+	margin: 1.5rem 0;
+	border-radius: 4px;
+	font-size: 0.925rem;
+}
+
+.entry-content p{
+	margin-bottom: 1.3em;
+}
+
+.entry-content p a{
+	text-decoration: underline;
+}
+
+.entry-content p a:hover{
+	text-decoration: none;
+}
