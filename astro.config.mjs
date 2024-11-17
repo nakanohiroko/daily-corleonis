@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
 import partytown from "@astrojs/partytown";
-import node from '@astrojs/node'; // Node.js SSR アダプターを追加
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,5 +21,5 @@ export default defineConfig({
       },
     }),
   ],
-  adapter: node({ mode: 'standalone' }), // Node.js用アダプター
+  adapter: vercel(),
 });

@@ -12,6 +12,8 @@ dayjs.locale('ja');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+export const prerender = true;
+
 // 生成する記事のIDを全て取得
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id"] });

@@ -12,6 +12,8 @@ dayjs.locale('ja');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+export const prerender = true;
+
 //microCMS呼び出し
 import { getBlogs } from "../library/microcms";
 export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {

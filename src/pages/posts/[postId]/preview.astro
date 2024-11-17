@@ -8,10 +8,10 @@ import Footer from '../../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../../config';
 import { getBlogDetail } from "../../../library/microcms";
 
+dayjs.locale('ja');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-// SSRを有効化
 export const prerender = false;
 
 const { postId } = Astro.params;
