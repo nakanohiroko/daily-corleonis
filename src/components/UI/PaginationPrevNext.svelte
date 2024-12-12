@@ -15,7 +15,7 @@
     <span class="duration-150 group-hover:text-blue-500">
       <IconChevronLeft />
     </span>
-    <span class="duration-150 group-hover:text-blue-500"> PREV </span>
+    <span class="duration-150 group-hover:text-blue-500 hidden sm:block"> PREV </span>
   </a>
 {:else if type === 'next'}
   <a
@@ -23,7 +23,7 @@
     aria-label="next page"
     class="group ml-2 flex gap-1 text-base tracking-wider text-slate-700"
   >
-    <span class="duration-150 group-hover:text-blue-500"> NEXT </span>
+    <span class="duration-150 group-hover:text-blue-500 hidden sm:block"> NEXT </span>
     <span class="duration-150 group-hover:text-blue-500">
       <IconChevronRight />
     </span>

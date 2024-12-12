@@ -6,27 +6,42 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../config';
-import { getBlogs, getBlogDetail } from "../../library/microcms";
+import type { Blog } from "../../library/microcms";
+import { fetchContentOrPreview } from "../../utils/fetchContentOrPreview";
 
 dayjs.locale('ja');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export const prerender = true;
+export const prerender = false;
 
-// 生成する記事のIDを全て取得
-export async function getStaticPaths() {
-  const response = await getBlogs({ fields: ["id"] });
-  return response.contents.map((content: any) => ({
-    params: {
-      postId: content.id,
-    },
-  }));
+const { postId } = Astro.params;
+if (!postId) throw new Error("id is required");
+
+const url = new URL(Astro.request.url);
+const draftKey = url.searchParams.get("draftKey");
+
+const cachePolicies = {
+  noCache: "no-store, no-cache, max-age=0, must-revalidate",
+  publicIsr: "public, s-maxage=30, stale-while-revalidate=30",
+};
+
+const post: Blog | null = await fetchContentOrPreview<Blog>({
+  endpoint: "blogs",
+  postId,
+  draftKey,
+});
+
+// 詳細データがない場合は 404 ページにリダイレクト
+if (!post) {
+  Astro.response.headers.set("Cache-Control", cachePolicies.noCache);
+  return Astro.redirect("/404", 302);
 }
 
-//記事の詳細情報を取得
-const { postId } = Astro.params;
-const post = await getBlogDetail(postId as string);
+// キャッシュポリシーを設定
+const cachePolicy = draftKey ? cachePolicies.noCache : cachePolicies.publicIsr;
+Astro.response.headers.set("Cache-Control", cachePolicy);
+
 ---
 
 <!DOCTYPE html>

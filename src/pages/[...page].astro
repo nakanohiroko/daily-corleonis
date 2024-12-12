@@ -36,9 +36,11 @@ const { page } = Astro.props;
 				{
 					page.data.map((post) => (
 						<div class="post">
-							<a href={`/posts/${post.id}`} class="post-title text-blue-500">
+							<h2 class="post-title text-blue-500">
+								<a href={`/posts/${post.id}`} class=" text-blue-500">
 								{dayjs(post.date).tz('Asia/Tokyo').format('YYYY.MM.DD ddd.')}
-							</a>
+								</a>
+							</h2>
 							<div set:html={post.content} class="entry-content" />
 						</div>
 					))

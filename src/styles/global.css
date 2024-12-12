@@ -28,7 +28,7 @@ b {
 	color: #222;
 }
 a {
-	color: #3273dc;
+	color: rgb(59 130 246);
 }
 nav a {
 	margin-right: 10px;
@@ -76,7 +76,7 @@ blockquote {
 	text-decoration: none;
 	margin-bottom: .4em;
 	--tw-text-opacity: 1;
-	color: rgb(59 130 246 / var(--tw-text-opacity));
+	color: rgb(59 130 246);
 }
 .entry-content{
 	line-height: 1.7em;

@@ -9,7 +9,7 @@ import vercel from '@astrojs/vercel/serverless';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://daily.corleonis.net/',
-  output: 'hybrid', // ハイブリッドモードに変更 (SSG + SSR)
+  output: 'static',
   integrations: [
     mdx(),
     sitemap(),
