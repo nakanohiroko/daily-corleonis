@@ -55,7 +55,7 @@ Astro.response.headers.set("Cache-Control", cachePolicy);
 			<div>
         <div class="post">
           <h2 class="post-title">
-            {dayjs(post.date).tz('Asia/Tokyo').format('YYYY.MM.DD ddd.')}
+            {post.title || dayjs(post.date).tz('Asia/Tokyo').format('YYYY.MM.DD ddd.')}
           </h2>
           <div set:html={post.content} class="entry-content" />
         </div>

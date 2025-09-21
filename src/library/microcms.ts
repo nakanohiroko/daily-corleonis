@@ -12,6 +12,7 @@ export type Blog = {
   revisedAt: string;
   date:string;
   content: string;
+  title: string;
   thumbnail: MicroCMSImage;
 };
 export type BlogResponse = {
