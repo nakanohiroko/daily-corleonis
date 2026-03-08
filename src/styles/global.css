@@ -113,3 +113,20 @@ blockquote {
 .entry-content p a:hover{
 	text-decoration: none;
 }
+
+.entry-content ul{
+	list-style-type: disc;
+	padding-left: 1.5em;
+	margin-bottom: 1.3em;
+}
+
+.entry-content ol{
+	list-style-type: decimal;
+	padding-left: 1.5em;
+	margin-bottom: 1.3em;
+}
+
+.entry-content ul li,
+.entry-content ol li{
+	margin-bottom: 0.5em;
+}
