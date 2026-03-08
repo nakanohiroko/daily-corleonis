@@ -47,7 +47,7 @@ Astro.response.headers.set("Cache-Control", cachePolicy);
 <!DOCTYPE html>
 <html lang="ja">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} thumbnail={post.thumbnail} />
+		<BaseHead title={post.title || dayjs(post.date).tz('Asia/Tokyo').format('YYYY.MM.DD ddd.') + ' - ' + SITE_TITLE} description={SITE_DESCRIPTION} thumbnail={post.thumbnail} />
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
