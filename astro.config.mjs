@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
 import partytown from "@astrojs/partytown";
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
