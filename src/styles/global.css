@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP:wght@400;600&family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/gen-interface-jp@0.1.2/400.css');
 /*
   The CSS in this style tag is based off of Bear Blog's default CSS.
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 body {
-	/*font-family: Verdana, sans-serif;*/
-	font-family: 'Lato', sans-serif;
+	font-family: "Gen Interface JP", sans-serif;
 	margin: auto;
 	padding: 20px;
 	max-width: 85ch;
@@ -15,7 +15,7 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
-	color: #444;
+	color: #4e4e4e;
 }
 h1,
 h2,
@@ -72,15 +72,14 @@ blockquote {
 	padding-bottom:2.5em;
 }
 .post-title{
-	font-size:1.25em;
+	font-size:1.15em;
 	text-decoration: none;
-	margin-bottom: .4em;
+	margin-bottom: 1em;
 	--tw-text-opacity: 1;
 	color: rgb(59 130 246);
 }
 .entry-content{
 	line-height: 1.7em;
-	font-family: 'Noto Sans JP', sans-serif;
 }
 
 .entry-content figure{
