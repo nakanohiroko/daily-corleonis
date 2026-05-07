@@ -14,7 +14,7 @@
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/svelte": "^7.0.1",
-    "@astrojs/vercel": "^8.0.0",
+    "@astrojs/vercel": "^8.2.11",
     "astro": "^5.0.5",
     "dayjs": "^1.11.9",
     "microcms-js-sdk": "^3.1.1",
